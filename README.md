@@ -1,10 +1,25 @@
 # BDCOM-OLT
 BDCOM EPON OLT (P3608B/P3616/P3310D) basic configuration through CLI
+How To Delete Onu In BDCOM OLT
+প্রথমে আপনাকে OLT তে লগিন করতে হবে।
 
-You've compiled a full list of commands to delete all **ONU bindings from sequence 1 to 64** on a specific EPON interface in a BDCOM OLT.
+তারপর Enable mode এ যেতে হবে। এজন্য আপনাকে লগিন এর পর enable লিখে Enter দিলে enable mode এ চলে যাবেন। এখন আপনাকে configure mode এ যেতে হবে, তার জন্য আপনাকে এখন config লিখে Enter দিতে হবে।
 
-To make this more efficient and clear, here's how you can **use these commands in bulk** within a CLI session or a configuration script.
+এরপর আপনাকে Epon সিলেক্ট করতে হবে, তার জন্য আপনাকে কমান্ড লিখতে হবে interface epon ( epon number ) as like interface epon 0/2 .
 
+তারপর no কমান্ড দিয়ে onu number দিতে হবে, এজন্য আপনাকে কমান্ড লিখতে হবে no epon bind-onu sequence ( onu number )
+
+তারপর অবশ্যই আপনাকে সেভ করার জন্য সেভ কমান্ড দিতে হবে, না হলে OLT Restart হওয়ার পর আবার আগের কনফিগারে ফিরে আসবে। সেভ দাওয়ার জন্য epon থেকে exit কমান্ড দিয়ে বের হতে হবে। তারপর write all লিখে Enter দিলে সেভ হয়ে যাবে।
+
+OLT#enable
+OLT#config
+
+OLT_config#interface epoN 0/2
+
+OLT_config_epon0/2#no epon bind-onu sequence 52
+
+OLT_config_epon0/2#exit
+OLT_config#write all
 ---
 
 ### ✅ **Batch Deletion of ONU Bindings (1–64)**
@@ -14,9 +29,9 @@ To make this more efficient and clear, here's how you can **use these commands i
 ```plaintext
 enable
 config
+```
 interface epon 0/2
 ```
-
 Then you can paste the full list:
 
 ```plaintext
