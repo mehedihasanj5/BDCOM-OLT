@@ -29,7 +29,6 @@ OLT_config#write all
 ```plaintext
 enable
 config
-```
 interface epon 0/2
 ```
 Then you can paste the full list:
